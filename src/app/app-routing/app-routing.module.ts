@@ -5,12 +5,17 @@ import { AdminComponent } from './../admin/admin.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthComponent } from '../auth/auth.component';
+import { AuthGuard } from '../_guards/auth.guard';
+import { MainComponent } from '../main/main.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '', redirectTo: 'starter', pathMatch: 'full' },
-      { path: 'starter', component: StarterComponent },
+      { path: 'login',    component: AuthComponent },
+      { path: '', redirectTo: 'starter', pathMatch: 'full', canActivate: [AuthGuard]},
+      { path: 'starter', component: MainComponent, canActivate: [AuthGuard]},
+      
     ])
   ],
   declarations: [],

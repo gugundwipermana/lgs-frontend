@@ -1,7 +1,25 @@
-import { AdminModule } from './admin/admin.module';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AdminModule } from './admin/admin.module';
+import { MainModule } from './main/main.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
+import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
+
+/**
+ * Library...
+ */
+// import { GaugeChartComponent } from 'angular-gauge-chart'
+// 
+// 
+// import { AmFilterPipe }       from './_pipe/am-filter.pipe';
+// import { ThousandSuffixesPipe } from './_pipe/thousand-suffixes.pipe';
+// import { InterimFilterPipe } from './_pipe/interim-filter.pipe';
+// import { InterimFilterSumPipe } from './_pipe/interim-filter-sum.pipe';
+// import { RevenuePerFilterPipe } from './_pipe/revenue-per-filter.pipe';
+// import { NumberIdPipe } from './_pipe/numberId.pipe';
 
 import { AppComponent } from './app.component';
 import { StarterComponent } from './starter/starter.component';
@@ -17,6 +35,22 @@ import { AdminContentComponent } from './admin/admin-content/admin-content.compo
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admin-control-sidebar.component';
 import { AdminDashboard1Component } from './admin/admin-dashboard1/admin-dashboard1.component';
+import { AuthComponent } from './auth/auth.component';
+import { SettingService } from './_services/setting.service';
+import { AuthGuard } from './_guards/auth.guard';
+import { AdminGuard } from './_guards/admin.guard';
+
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './_services/auth.service';
+import { MainComponent } from './main/main.component';
+import { MainHeaderComponent } from './main/main-header/main-header.component';
+import { MainLeftSideComponent } from './main/main-left-side/main-left-side.component';
+import { MainContentComponent } from './main/main-content/main-content.component';
+import { MainFooterComponent } from './main/main-footer/main-footer.component';
+import { MainControlSidebarComponent } from './main/main-control-sidebar/main-control-sidebar.component';
+import { HomeComponent } from './main/home/home.component';
+import { MappingComponent } from './main/mapping/mapping.component';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +60,45 @@ import { AdminDashboard1Component } from './admin/admin-dashboard1/admin-dashboa
     StarterLeftSideComponent,
     StarterContentComponent,
     StarterFooterComponent,
-    StarterControlSidebarComponent
+    StarterControlSidebarComponent,
+    AuthComponent,
+/*
+    MainComponent,
+    MainHeaderComponent,
+    MainLeftSideComponent,
+    MainContentComponent,
+    MainFooterComponent,
+    MainControlSidebarComponent,
+    HomeComponent,
+    MappingComponent,
+    */
+
+//    GaugeChartComponent,
+
+//    AmFilterPipe,
+//    ThousandSuffixesPipe,
+//    InterimFilterPipe,
+//    InterimFilterSumPipe,
+//    RevenuePerFilterPipe,
+//    NumberIdPipe,
+
   ],
   imports: [
+    HttpModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule,
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    MainModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AdminGuard,
+    AuthService,
+    SettingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
