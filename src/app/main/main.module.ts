@@ -27,11 +27,17 @@ import { NumberIdPipe } from '../_pipe/numberId.pipe';
 import { HomeComponent } from './home/home.component';
 import { MappingComponent } from './mapping/mapping.component';
 import { RevenueService } from '../_services/revenue.service';
+import { MappingAmComponent } from './mapping/mapping-am/mapping-am.component';
+import { MappingCustomerComponent } from './mapping/mapping-customer/mapping-customer.component';
+import { MappingAccountComponent } from './mapping/mapping-account/mapping-account.component';
+import { AmService } from '../_services/am.service';
+import { AccountService } from '../_services/account.service';
+import { CustomerService } from '../_services/customer.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
   ],
   declarations: [
     MainComponent,
@@ -52,10 +58,16 @@ import { RevenueService } from '../_services/revenue.service';
     InterimFilterSumPipe,
     RevenuePerFilterPipe,
     NumberIdPipe,
+    MappingAmComponent,
+    MappingCustomerComponent,
+    MappingAccountComponent,
 
   ],
   providers: [
     RevenueService,
+    AmService,
+    CustomerService,
+    AccountService,
   ],
   exports: [MainComponent]
 })

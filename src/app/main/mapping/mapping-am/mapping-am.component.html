@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">AM</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+             
+
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>TREG</th>
+                    <th>SAM</th>
+                    <th>AM</th>
+                    <th>JAM-2</th>
+                    <th>JAM-1</th>                
+                    <th>ASMAN</th>
+                    <th>AMEX</th>
+                    <th>TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of sumJabatanPerTregs">
+                      <td>{{ item.ID }}</td>
+                      <td (click)="getTregJabatanAm(item.ID, 1)">{{ item._1 }}</td>
+                      <td (click)="getTregJabatanAm(item.ID, 2)">{{ item._2 }}</td>
+                      <td (click)="getTregJabatanAm(item.ID, 3)">{{ item._3 }}</td>
+                      <td (click)="getTregJabatanAm(item.ID, 4)">{{ item._4 }}</td>
+                      <td (click)="getTregJabatanAm(item.ID, 5)">{{ item._5 }}</td>
+                      <td (click)="getTregJabatanAm(item.ID, 6)">{{ item._6 }}</td>
+                      <td>{{ item.total }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">LIST AM</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+             
+            </div>
+        </div>
+    </div>
+  </div>

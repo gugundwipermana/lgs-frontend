@@ -13,8 +13,8 @@ import { MainComponent } from '../main/main.component';
   imports: [
     RouterModule.forRoot([
       { path: 'login',    component: AuthComponent },
-      { path: '', redirectTo: 'starter', pathMatch: 'full', canActivate: [AuthGuard]},
-      { path: 'starter', component: MainComponent, canActivate: [AuthGuard]},
+      { path: '', redirectTo: 'main', pathMatch: 'full', canActivate: [AuthGuard]},
+      { path: 'main', component: MainComponent, canActivate: [AuthGuard]},
       
     ])
   ],
