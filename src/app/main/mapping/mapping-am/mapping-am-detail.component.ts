@@ -9,15 +9,17 @@ import { RevenueService } from '../../../_services/revenue.service';
   selector: 'app-mapping-am-detail',
   template: `
 
-  <div class="row" *ngIf="am" class="box-detail-am">
+  <div class="row" *ngIf="am_id" class="box-detail-am">
   
+  <img *ngIf="loading" style="position: absolute; top:10px; left:10px; z-index:99;" src="assets/img/loading.gif" />
+
   <button (click)="closeComponent()" type="submit" class="btn btn-danger pull-right btn-sm btn-close">Close</button>
   
 
     <div class="col-md-3">
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="{{ am.AVATAR }}" alt="User profile picture">
+                <img class="profile-user-img img-responsive img-circle" src="{{ am.AVATAR }}" alt="User profile picture" style="height:100px;">
 
                 <h3 class="profile-username text-center">{{ am.NAME }}</h3>
 
@@ -149,10 +151,11 @@ import { RevenueService } from '../../../_services/revenue.service';
         left: 0;
         z-index: 9999;
         width: 100vw;
-        background-color: #f5ecec;
+        background-color: rgba(0, 0, 0, 0.8);
         padding: 20px;
         border-bottom: 5px solid #dd4b39;
-        max-height: 500px;
+        /* max-height: 500px; */
+        height: calc(100vh - 60px)
     }
 
     .btn-close {
@@ -206,10 +209,9 @@ export class MappingAmDetailComponent implements OnInit {
   }
 
   getData() {
+    this.loading = true;
     this.route.params.subscribe(params => {
-    
         this.getAmById(this.am_id);
-
     });
   }
 
@@ -237,8 +239,6 @@ export class MappingAmDetailComponent implements OnInit {
   getAmById(id: string) {
 
     this.am = null;
-    this.loading = true;
-
     this.amService.getById(id)
       .subscribe(data => {
 
@@ -260,12 +260,7 @@ export class MappingAmDetailComponent implements OnInit {
     }
 
     getCustomerByAm(am_id: string) {
-    // remove all data
-    // this.amCustomers = null;
-
     this.amCustomerDetail = null;
-
-    this.loading = true;
 
     this.amService.getByAm(am_id)
         .subscribe(data => {

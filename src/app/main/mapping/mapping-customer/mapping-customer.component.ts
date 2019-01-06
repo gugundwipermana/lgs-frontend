@@ -8,6 +8,9 @@ import { Customer } from '../../../_models/customer';
   styleUrls: ['./mapping-customer.component.css']
 })
 export class MappingCustomerComponent implements OnInit {
+  
+  public loading:boolean = false;
+  public loading_treg:boolean = false;
 
   public sumTypeCustomerPerTregs: any;
 
@@ -26,13 +29,16 @@ export class MappingCustomerComponent implements OnInit {
   }
   
   countTypeCustomerPerTreg() {
+    this.loading = true;
     this.customerService.countByTregType()
       .subscribe(data => {
         this.sumTypeCustomerPerTregs = data;
+        this.loading = false;
       })
   }
 
   getCustomerTregType(treg, type) {
+    this.loading_treg = true;
 
     this.type = type;
     this.treg = treg;
@@ -41,6 +47,7 @@ export class MappingCustomerComponent implements OnInit {
     this.customerService.getByTregType(this.treg, this.type)
         .subscribe(data=> {
             this.data = data;
+            this.loading_treg = false;
         })
   }
 

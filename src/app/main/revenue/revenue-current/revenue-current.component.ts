@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InterimService } from '../../../_services/interim.service';
 
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-revenue-current',
   templateUrl: './revenue-current.component.html',
@@ -43,4 +45,20 @@ export class RevenueCurrentComponent implements OnInit {
         this.loading = false;
       });
   }
+
+
+  
+  
+  /** 
+   * ------------------------------------------------
+   * Export Excel
+   * ------------------------------------------------
+   * 
+   */
+  exportXLSX() {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.data);
+    const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
+    XLSX.writeFile(workbook, 'export-data-revenue.xlsx');
+  }
+
 }

@@ -9,6 +9,9 @@ import { Am } from '../../../_models/am';
 })
 export class MappingAmComponent implements OnInit {
 
+  public loading:boolean = false;
+  public loading_treg:boolean = false;
+
   public sumJabatanPerTregs: any;
 
   // public ams: Am[] = [];
@@ -50,13 +53,18 @@ export class MappingAmComponent implements OnInit {
   }
 
   countJabatanPerTreg() {
+    this.loading = true;
+
     this.amService.countByTregJabatan()
       .subscribe(data => {
         this.sumJabatanPerTregs = data;
+        this.loading = false;
       })
   }
 
   getTregJabatanAm(treg, jabatan_id) {
+    this.loading_treg = true;
+
     this.jabatan_id = jabatan_id;
     this.treg = treg;
 
@@ -79,6 +87,8 @@ export class MappingAmComponent implements OnInit {
     this.amService.getByTregJabatan(this.treg, this.jabatan_id, this.year, this.start_month, this.end_month)
         .subscribe(data=> {
             this.data = data;
+
+            this.loading_treg = false;
         })
   }
 

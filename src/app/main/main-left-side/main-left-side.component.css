@@ -1,0 +1,4 @@
+.skin-red-light .sidebar-menu > li:hover > a, 
+.skin-red-light .sidebar-menu > li.active > a {
+    background: #cccccc;
+}

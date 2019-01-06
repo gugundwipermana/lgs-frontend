@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import { TregService } from '../../../_services/treg.service';
 import { WitelService } from '../../../_services/witel.service';
 
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-revenue-ytd',
   templateUrl: './revenue-ytd.component.html',
@@ -310,6 +312,22 @@ export class RevenueYtdComponent implements OnInit {
     this.getCustomorByAm(this.param_am);   
   }
   
+
+
+
+
+  
+  /** 
+   * ------------------------------------------------
+   * Export Excel
+   * ------------------------------------------------
+   * 
+   */
+  exportXLSX() {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.data);
+    const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
+    XLSX.writeFile(workbook, 'export-data-revenue.xlsx');
+  }
 
 
 

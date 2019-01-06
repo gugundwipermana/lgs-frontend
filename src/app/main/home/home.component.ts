@@ -10,6 +10,12 @@ import { RevenueService } from '../../_services/revenue.service';
 })
 export class HomeComponent implements OnInit {
 
+
+  public loading_ytd:boolean = false;
+  public loading_current:boolean = false;
+  public loading_ach:boolean = false;
+  public loading_tier:boolean = false;
+
   
   public revenueTregs: Revenue[] = [];
   public interims:any;
@@ -145,6 +151,8 @@ export class HomeComponent implements OnInit {
   }
 
   getHomeYtdCurrent(with_interim: boolean) {
+    this.loading_ytd = true;
+
     this.revenueService.getgetHomeYtdCurrent(this.year, 1, this.month)
         .subscribe(data => {
 
@@ -181,6 +189,7 @@ export class HomeComponent implements OnInit {
             this.detailHomeYtdCurrent(data);
           }
 
+          this.loading_ytd = false;
         })
   }
 
@@ -235,6 +244,8 @@ export class HomeComponent implements OnInit {
   }
 
   getHomeInterim() {
+    this.loading_current = true;
+
     this.revenueService.getHomeInterim(this.year, this.month)
       .subscribe(data => {
 
@@ -287,11 +298,14 @@ export class HomeComponent implements OnInit {
         );
         myBarchart.draw();
 
+        this.loading_current = false;
     })
   }
 
   
   getHomeYtdAm() {
+    this.loading_ach = true;
+
     this.revenueService.getHomeYtdAm(this.year, this.month)
       .subscribe(data => {
         this.pmsCountAms = data;  
@@ -327,11 +341,14 @@ export class HomeComponent implements OnInit {
       
         myPiechart.draw();
 
+        this.loading_ach = false;
     })
   }
 
 
   getHomeYtdCustomer() {
+    this.loading_tier = true;
+
     this.revenueService.getHomeYtdCustomer(this.year, this.month)
       .subscribe(data => {
 
@@ -367,7 +384,8 @@ export class HomeComponent implements OnInit {
         );
      
         myPiechart.draw();
-          
+
+        this.loading_tier = false;
     })
   }
 

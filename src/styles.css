@@ -3,3 +3,14 @@ a.btn-tab.active {
     background-color: #dd4b39;
     color: white;
 }
+
+
+.login-page {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+    background-image: url(assets/img/background-2.jpg) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}

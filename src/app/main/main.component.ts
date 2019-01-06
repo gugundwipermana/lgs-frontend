@@ -17,6 +17,8 @@ export class MainComponent implements OnInit, OnDestroy {
     this.body.classList.add('skin-red-light'); // skin-black-light
     this.body.classList.add('sidebar-mini');
     this.body.classList.add('sidebar-collapse');
+
+    this.body.classList.remove('login-page');
   }
 
    ngOnDestroy() {

@@ -14,6 +14,8 @@
         <!-- /.box-header -->
         <div class="box-body">
 
+          <img *ngIf="loading_ytd" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+
           <div class="row">
             <div class="col-md-4">
               <rg-gauge-chart
@@ -102,6 +104,8 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
+
+            <img *ngIf="loading_current" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
   
             <div class="row">
               <div class="col-md-4">
@@ -190,6 +194,9 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
+            
+            <img *ngIf="loading_ach" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+
             <div class="row">
               <div class="col-md-4">
                 <div class="diagram-cuistom">
@@ -212,10 +219,10 @@
                   <tbody>
                     <tr *ngFor="let item of pmsCountAms" [routerLink]="['revenue', 'am']" class="tr-click">
                       <td>{{ item.TREG }}</td>
-                      <td>{{ item.DIATAS_150 }}</td>
-                      <td>{{ item.DIATAS_100 }}</td>
-                      <td>{{ item.DIATAS_50 }}</td>
-                      <td>{{ item.DIBAWAH_50 }}</td>
+                      <td><label *ngIf="item.DIATAS_150 === null">-</label>{{ item.DIATAS_150 }}</td>
+                      <td><label *ngIf="item.DIATAS_100 === null">-</label>{{ item.DIATAS_100 }}</td>
+                      <td><label *ngIf="item.DIATAS_50 === null">-</label>{{ item.DIATAS_50 }}</td>
+                      <td><label *ngIf="item.DIBAWAH_50 === null">-</label>{{ item.DIBAWAH_50 }}</td>
                       <th>{{ (item.DIATAS_150*1) + (item.DIATAS_100*1) + (item.DIATAS_50*1) + (item.DIBAWAH_50*1) }}</th>
                     </tr>
                   </tbody>
@@ -249,6 +256,9 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
+
+            <img *ngIf="loading_tier" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+
             <div class="row">
               <div class="col-md-4">
                 <div class="diagram-cuistom">
@@ -271,10 +281,10 @@
                   <tbody>
                     <tr *ngFor="let item of pmsCountCustomers" [routerLink]="['revenue', 'customer']" class="tr-click">
                       <td>{{ item.TREG }}</td>
-                      <td>{{ item.DIATAS_10 }}</td>
-                      <td>{{ item.DUA_SAMPAI_10 }}</td>
-                      <td>{{ item.DUA }}</td>
-                      <td>{{ item.ZERO }}</td>
+                      <td><label *ngIf="item.DIATAS_10 === null">-</label>{{ item.DIATAS_10 }}</td>
+                      <td><label *ngIf="item.DUA_SAMPAI_10 === null">-</label>{{ item.DUA_SAMPAI_10 }}</td>
+                      <td><label *ngIf="item.DUA === null">-</label>{{ item.DUA }}</td>
+                      <td><label *ngIf="item.ZERO === null">-</label>{{ item.ZERO }}</td>
                       <th>{{ (item.DIATAS_10*1) +  (item.DUA_SAMPAI_10*1) + (item.DUA*1) + (item.ZERO*1) }}</th>
                     </tr>
                   </tbody>

@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
     // jika sudah login, alihkan ke '/'
     if(this.authGuard.canActivate(null) == true) {
       console.log('Sudah login');
-      this.router.navigate(['/main']);
+      this.router.navigate(['/main/home']);
     }
   }
 
@@ -42,7 +42,7 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.model.EMAIL, this.model.PASSWORD)
       .subscribe(result => {
         if(result === true) {
-          this.router.navigate(['/main']);
+          this.router.navigate(['/main/home']);
 
           this.model.EMAIL = '';
           this.model.PASSWORD = '';
