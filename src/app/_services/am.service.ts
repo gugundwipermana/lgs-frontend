@@ -19,6 +19,8 @@ export class AmService {
   private url_byId: string;
   private url_byAm: string;
 
+  private url_getByWitel: string;
+
   constructor(
     private http: Http,
     private authService: AuthService,
@@ -31,6 +33,8 @@ export class AmService {
 
     this.url_byId = this.url+"AmController/getById";
     this.url_byAm = this.url+"AmController/getBy/AM_ID";
+
+    this.url_getByWitel = this.url+"AmController/getByWitel";
   }
 
 
@@ -68,6 +72,15 @@ export class AmService {
     let options = new RequestOptions({ headers: headers});
 
     return this.http.get(this.url_byAm+"/"+am_id, options)
+      .map((response: Response) => response.json());
+  }
+
+  
+  getByWitel(witel_id): Observable<Am[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_getByWitel+"/"+witel_id, options)
       .map((response: Response) => response.json());
   }
 

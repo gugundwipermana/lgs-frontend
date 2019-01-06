@@ -1,0 +1,60 @@
+import { Component, OnInit } from '@angular/core';
+import { RevenueService } from '../../../_services/revenue.service';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-customer-tier',
+  templateUrl: './customer-tier.component.html',
+  styleUrls: ['./customer-tier.component.css']
+})
+export class CustomerTierComponent implements OnInit {
+
+  private loading: Boolean = false;
+
+  public data: any;
+
+  public year: number;
+  public start_month: number = 1;
+  public end_month: number;
+
+  constructor(
+    public revenueService: RevenueService,
+    public activatedRoute: ActivatedRoute,
+    public route: ActivatedRoute,
+  ) { }
+
+  ngOnInit() {
+    var d = new Date();
+    this.end_month = d.getMonth()+1;
+    this.year = d.getFullYear();
+
+    if(this.end_month == 1) {
+        this.year = this.year - 1;
+        this.end_month = 12;
+      }
+
+    this.route.params.subscribe(params => {
+      
+	    if(params['year'] != undefined) {
+
+        this.year = params['year'];
+        this.start_month = params['start_month'];
+        this.end_month = params['end_month'];
+        }
+    });
+
+    this.getData();
+  }
+
+  getData() {
+    this.loading = true;
+    this.data = [];
+    this.revenueService.getPerCustomer(this.year, this.start_month, this.end_month)
+      .subscribe(data=> {
+        this.data = data;
+
+        this.loading = false;
+      })
+  }
+
+}

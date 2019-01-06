@@ -7,7 +7,7 @@
           <h3 class="box-title">REVENUE YTD <small>{{ bulan }}</small></h3>
 
           <div class="box-tools">
-            <button routerLink="revenue" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
+              <button routerLink="/main/revenue/ytd" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
           </div>
 
         </div>
@@ -96,7 +96,7 @@
             <h3 class="box-title">REVENUE CURRENT MONTH <small>{{ bulan }}</small></h3>
   
             <div class="box-tools">
-              <button routerLink="interim/all" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
+              <button routerLink="/main/revenue/current" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
             </div>
   
           </div>
@@ -185,7 +185,7 @@
           <div class="box-header with-border">
             <h3 class="box-title">CUSTOMER ACHIEVEMENT <small>{{ bulan }}</small></h3>
             <div class="box-tools">
-              <button [routerLink]="['revenue', 'am']" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
+              <button routerLink="/main/customer/ach" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
             </div>
           </div>
           <!-- /.box-header -->
@@ -244,7 +244,7 @@
           <div class="box-header with-border">
             <h3 class="box-title">CUSTOMER TIER <small>{{ bulan }}</small></h3>
             <div class="box-tools">
-              <button [routerLink]="['revenue', 'customer']" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
+              <button routerLink="/main/customer/tier" type="button" class="btn btn-block btn-default btn-xs"><i class="fa fa-eye"></i> View Detail</button>
             </div>
           </div>
           <!-- /.box-header -->

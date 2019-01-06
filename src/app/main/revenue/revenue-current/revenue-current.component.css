@@ -1,0 +1,13 @@
+.row-total div {
+    border-right: 1px solid #ccc;
+    padding: 5px;
+    text-align: right;
+}
+
+.row-rekap h3 {
+    margin: 2px;
+}
+
+.th-center {
+    text-align: center;
+}

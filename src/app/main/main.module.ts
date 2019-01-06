@@ -36,6 +36,16 @@ import { AmService } from '../_services/am.service';
 import { AccountService } from '../_services/account.service';
 import { CustomerService } from '../_services/customer.service';
 import { MappingAmDetailComponent } from './mapping/mapping-am/mapping-am-detail.component';
+import { RevenueComponent } from './revenue/revenue.component';
+import { CustomerComponent } from './customer/customer.component';
+import { RevenueYtdComponent } from './revenue/revenue-ytd/revenue-ytd.component';
+import { RevenueCurrentComponent } from './revenue/revenue-current/revenue-current.component';
+import { CustomerAchComponent } from './customer/customer-ach/customer-ach.component';
+import { CustomerTierComponent } from './customer/customer-tier/customer-tier.component';
+import { TregService } from '../_services/treg.service';
+import { WitelService } from '../_services/witel.service';
+import { FormsModule } from '@angular/forms';
+import { InterimService } from '../_services/interim.service';
 
 @NgModule({
   imports: [
@@ -43,6 +53,7 @@ import { MappingAmDetailComponent } from './mapping/mapping-am/mapping-am-detail
     MainRoutingModule,
     
     DataTableModule,
+    FormsModule,
   ],
   declarations: [
     MainComponent,
@@ -66,8 +77,13 @@ import { MappingAmDetailComponent } from './mapping/mapping-am/mapping-am-detail
     MappingAmComponent,
     MappingCustomerComponent,
     MappingAccountComponent,
-
     MappingAmDetailComponent,
+    RevenueComponent,
+    CustomerComponent,
+    RevenueYtdComponent,
+    RevenueCurrentComponent,
+    CustomerAchComponent,
+    CustomerTierComponent,
 
   ],
   providers: [
@@ -75,6 +91,9 @@ import { MappingAmDetailComponent } from './mapping/mapping-am/mapping-am-detail
     AmService,
     CustomerService,
     AccountService,
+    TregService,
+    WitelService,
+    InterimService,
   ],
   exports: [MainComponent]
 })

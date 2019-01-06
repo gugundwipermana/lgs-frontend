@@ -19,6 +19,9 @@ export class RevenueService {
 
   private url_getDetail: string;
 
+  private url_getPerCustomer: string;
+  private url_getPerAm: string;
+
   constructor(
     private http: Http,
     private settingService: SettingService
@@ -31,6 +34,9 @@ export class RevenueService {
     this.url_getHomeYtdAm = this.url+"RevenueController/getHomeYtdAm";
 
     this.url_getDetail = this.url+"RevenueController/detail";
+
+    this.url_getPerCustomer = this.url+"RevenueController/getDetailCustomor";
+    this.url_getPerAm = this.url+"RevenueController/getDetailAm";
   }
 
   
@@ -78,5 +84,25 @@ export class RevenueService {
     return this.http.get(this.url_getDetail+'/'+year+'/'+month_start+'/'+month_end+'/'+treg+'/'+witel_id+'/'+customer_id+'/'+am_id, options)
       .map((response: Response) => response.json());
   }
+
+
+  
+
+  getPerCustomer(year, month_start, month_end): Observable<any[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_getPerCustomer+'/'+year+'/'+month_start+'/'+month_end, options)
+      .map((response: Response) => response.json());
+  }
+
+  getPerAm(year, month_start, month_end): Observable<any[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_getPerAm+'/'+year+'/'+month_start+'/'+month_end, options)
+      .map((response: Response) => response.json());
+  }
+
 
 }

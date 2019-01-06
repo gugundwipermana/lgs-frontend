@@ -8,6 +8,12 @@ import { AuthGuard } from '../../_guards/auth.guard';
 import { MappingAmComponent } from '../mapping/mapping-am/mapping-am.component';
 import { MappingCustomerComponent } from '../mapping/mapping-customer/mapping-customer.component';
 import { MappingAccountComponent } from '../mapping/mapping-account/mapping-account.component';
+import { RevenueComponent } from '../revenue/revenue.component';
+import { RevenueYtdComponent } from '../revenue/revenue-ytd/revenue-ytd.component';
+import { RevenueCurrentComponent } from '../revenue/revenue-current/revenue-current.component';
+import { CustomerComponent } from '../customer/customer.component';
+import { CustomerAchComponent } from '../customer/customer-ach/customer-ach.component';
+import { CustomerTierComponent } from '../customer/customer-tier/customer-tier.component';
 
 @NgModule({
   imports: [
@@ -35,6 +41,24 @@ import { MappingAccountComponent } from '../mapping/mapping-account/mapping-acco
             ]
           },
 
+          {
+            path: 'revenue',
+            component: RevenueComponent, canActivate: [AuthGuard],
+            children: [
+              { path: 'ytd/:year/:start_month/:end_month/:treg/:witel/:customer/:am', component: RevenueYtdComponent, canActivate: [AuthGuard] },
+              { path: 'ytd', component: RevenueYtdComponent, canActivate: [AuthGuard] },
+              { path: 'current', component: RevenueCurrentComponent, canActivate: [AuthGuard] }
+            ]
+          },
+
+          {
+            path: 'customer',
+            component: CustomerComponent, canActivate: [AuthGuard],
+            children: [
+              { path: 'ach', component: CustomerAchComponent, canActivate: [AuthGuard] },
+              { path: 'tier', component: CustomerTierComponent, canActivate: [AuthGuard] }
+            ]
+          },
         ]
       }
     ])

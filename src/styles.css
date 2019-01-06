@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+a.btn-tab.active {
+    background-color: #dd4b39;
+    color: white;
+}

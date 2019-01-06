@@ -1,0 +1,111 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><i class="fa fa-dollar"></i> REVENUE CURRENT</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div clas="row">
+        <div class="col-md-4">
+          <input type="text" class="form-control form-control" [(ngModel)]="tregSearch" placeholder="Treg">
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control form-control" [(ngModel)]="witelSearch" placeholder="Witel">
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control form-control" [(ngModel)]="customerSearch" placeholder="Customer">
+        </div>
+      </div>
+
+      <hr/>
+    
+      <div class="row row-rekap">
+
+        <div class="col-md-10">
+          <div class="row row-total">
+            
+            <div class="col-md-2">
+              <p style="font-size: 10px;margin-bottom: 0px;">SISKA</p>
+              <h3>{{ (data | interimFilterSum: tregSearch:witelSearch:customerSearch:'SISKA') | numberId }}</h3>
+            </div>
+            <div class="col-md-2">
+              <p style="font-size: 10px;margin-bottom: 0px;">TIBS</p>
+              <h3>{{ (data | interimFilterSum: tregSearch:witelSearch:customerSearch:'TIBS') | numberId }}</h3>
+            </div>
+            <div class="col-md-2">
+              <p style="font-size: 10px;margin-bottom: 0px;">KOREKSI</p>
+              <h3>{{ (data | interimFilterSum: tregSearch:witelSearch:customerSearch:'KOREKSI') | numberId }}</h3>
+            </div>
+            <div class="col-md-2">
+              <p style="font-size: 10px;margin-bottom: 0px;">SODOMORO</p>
+              <h3>{{ (data | interimFilterSum: tregSearch:witelSearch:customerSearch:'SODOMORO') | numberId }}</h3>
+            </div>
+            <div class="col-md-2">
+              <p style="font-size: 10px;margin-bottom: 0px;">TOTAL</p>
+              <h3>{{ (data | interimFilterSum: tregSearch:witelSearch:customerSearch:'TOTAL') | numberId }}</h3>
+            </div>
+            <div class="col-md-2">
+              <p style="font-size: 10px;margin-bottom: 0px;">SHORTAGE</p>
+              <h3>{{ (data | interimFilterSum: tregSearch:witelSearch:customerSearch:'SHORTAGE') | numberId }}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div style="padding: 5px;">
+              <p style="font-size: 10px;margin-bottom: 0px;">ACHIEVEMENT</p>
+              <h3>{{ (((data | interimFilterSum: tregSearch:witelSearch:customerSearch:'TOTAL') / (interims | interimFilterSum: tregSearch:witelSearch:customerSearch:'TARGET')) * 100) | number }}%</h3>    
+          </div>
+        </div>
+
+      </div>
+   
+      <hr/>
+
+        <table class="table table-bordered table-striped"
+        [mfData]="data | interimFilter: tregSearch:witelSearch:customerSearch" #mf="mfDataTable"
+        [mfRowsOnPage]="10"
+        >
+          <thead>
+            <tr>
+                <th rowspan="2">NO</th>
+                <th rowspan="2" width="70">TREG</th>
+                <th rowspan="2">WITEL</th>
+                <th rowspan="2">CUSTOMER</th>
+                <th rowspan="2">TARGET</th>
+                <th colspan="4" style="text-align: center;">REALISASI</th>
+                <th rowspan="2">TOTAL</th>
+                <th rowspan="2">SHORTAGE</th>
+                <th rowspan="2">ACHIEVE</th>
+            </tr>
+            <tr>
+                <th>SISKA</th>
+                <th>TIBS</th>
+                <th>KOREKSI</th>
+                <th>SODOMORO</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of mf.data; let i = index"> <!--  | interimFilter: tregSearch:witelSearch:customerSearch -->
+                <td>{{ i+1 }}</td>
+                <td>{{ item.TREG }}</td>
+                <td>{{ item.WITEL_NAME }}</td>
+                <td>{{ item.CUSTOMER_NAME }}</td>
+                <td class="td-align-right">{{ item.TARGET | numberId }}</td>
+                <td class="td-align-right">{{ item.SISKA | numberId }}</td>
+                <td class="td-align-right">{{ item.TIBS | numberId }}</td>
+                <td class="td-align-right">{{ item.KOREKSI | numberId }}</td>
+                <td class="td-align-right">{{ item.SODOMORO | numberId }}</td>
+                <td class="td-align-right">{{ item.TOTAL | numberId }}</td>
+                <td class="td-align-right">{{ item.SHORTAGE | numberId }}</td>
+                <td class="td-align-right">{{ item.ACH }}%</td>
+            </tr>
+            </tbody>
+            <tfoot>
+	            <tr>
+	                <td colspan="12">
+	                    <mfBootstrapPaginator [rowsOnPageSet]="[10,50,100]"></mfBootstrapPaginator>
+	                </td>
+	            </tr>
+	          </tfoot>
+        </table>
+    </div>
+</div>
