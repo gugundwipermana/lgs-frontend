@@ -10,18 +10,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-/**
- * Library...
- */
-import { GaugeChartComponent } from 'angular-gauge-chart'
-
-
 import { AmFilterPipe }       from '../_pipe/am-filter.pipe';
 import { ThousandSuffixesPipe } from '../_pipe/thousand-suffixes.pipe';
 import { InterimFilterPipe } from '../_pipe/interim-filter.pipe';
 import { InterimFilterSumPipe } from '../_pipe/interim-filter-sum.pipe';
 import { RevenuePerFilterPipe } from '../_pipe/revenue-per-filter.pipe';
 import { NumberIdPipe } from '../_pipe/numberId.pipe';
+
+
+/**
+ * Library...
+ */
+import { GaugeChartComponent } from 'angular-gauge-chart'
+import { DataTableModule }     from 'angular2-datatable';
+
 
 
 import { HomeComponent } from './home/home.component';
@@ -33,11 +35,14 @@ import { MappingAccountComponent } from './mapping/mapping-account/mapping-accou
 import { AmService } from '../_services/am.service';
 import { AccountService } from '../_services/account.service';
 import { CustomerService } from '../_services/customer.service';
+import { MappingAmDetailComponent } from './mapping/mapping-am/mapping-am-detail.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MainRoutingModule,
+    
+    DataTableModule,
   ],
   declarations: [
     MainComponent,
@@ -61,6 +66,8 @@ import { CustomerService } from '../_services/customer.service';
     MappingAmComponent,
     MappingCustomerComponent,
     MappingAccountComponent,
+
+    MappingAmDetailComponent,
 
   ],
   providers: [

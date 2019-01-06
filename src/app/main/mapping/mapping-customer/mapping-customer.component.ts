@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../_services/customer.service';
+import { Customer } from '../../../_models/customer';
 
 @Component({
   selector: 'app-mapping-customer',
@@ -9,6 +10,12 @@ import { CustomerService } from '../../../_services/customer.service';
 export class MappingCustomerComponent implements OnInit {
 
   public sumTypeCustomerPerTregs: any;
+
+  /** Data table... */
+  public data: Customer[] = [];
+
+  public treg:string;
+  public type:string;
 
   constructor(
     public customerService: CustomerService,
@@ -23,6 +30,18 @@ export class MappingCustomerComponent implements OnInit {
       .subscribe(data => {
         this.sumTypeCustomerPerTregs = data;
       })
+  }
+
+  getCustomerTregType(treg, type) {
+
+    this.type = type;
+    this.treg = treg;
+
+    this.data = [];
+    this.customerService.getByTregType(this.treg, this.type)
+        .subscribe(data=> {
+            this.data = data;
+        })
   }
 
 }

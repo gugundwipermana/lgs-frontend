@@ -17,6 +17,8 @@ export class RevenueService {
   private url_getHomeYtdCustomer: string;
   private url_getHomeYtdAm: string;
 
+  private url_getDetail: string;
+
   constructor(
     private http: Http,
     private settingService: SettingService
@@ -27,6 +29,8 @@ export class RevenueService {
     this.url_getHomeInterim = this.url+"RevenueController/getHomeInterim";
     this.url_getHomeYtdCustomer = this.url+"RevenueController/getHomeYtdCustomer";
     this.url_getHomeYtdAm = this.url+"RevenueController/getHomeYtdAm";
+
+    this.url_getDetail = this.url+"RevenueController/detail";
   }
 
   
@@ -65,5 +69,14 @@ export class RevenueService {
 
 
 
+
+  
+  getDetail(year, month_start, month_end, treg, witel_id, customer_id, am_id): Observable<any[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_getDetail+'/'+year+'/'+month_start+'/'+month_end+'/'+treg+'/'+witel_id+'/'+customer_id+'/'+am_id, options)
+      .map((response: Response) => response.json());
+  }
 
 }
