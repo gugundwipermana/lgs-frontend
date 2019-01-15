@@ -104,6 +104,8 @@
                 <th width="70">TREG</th>
                 <th>WITEL</th>
                 <th>CUSTOMER</th>
+                <th>TARGET</th>
+                <th>REVENUE</th>
                 <th>ACHIEVEMENT</th>
                 <th>KET</th>
             </tr>
@@ -114,13 +116,15 @@
                 <td>{{ item.TREG }}</td>
                 <td>{{ item.WITEL_NAME }}</td>
                 <td>{{ item.NAME }}</td>
+                <td align="right">{{ item.TARGET | numberId }}</td>
+                <td align="right">{{ item.REVENUE | numberId }}</td>
                 <td align="right">{{ (item.REVENUE / item.TARGET) * 100 | number }}%</td>
                 <td align="right">{{ item.KET }} {{ item.KET == 'ZERO' ? '': 'M' }}</td>
             </tr>
             </tbody>
             <tfoot>
 	            <tr>
-	                <td colspan="6">
+	                <td colspan="8">
 	                    <mfBootstrapPaginator [rowsOnPageSet]="[10,50,100]"></mfBootstrapPaginator>
 	                </td>
 	            </tr>

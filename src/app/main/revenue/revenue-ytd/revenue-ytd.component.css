@@ -27,3 +27,29 @@
 .filter-select {
     margin-bottom: 5px;
 }
+
+
+
+
+
+/**
+ * Progress Bar
+ */
+
+ .progress {
+    height: 5px;
+ }
+
+  .progress-bar{
+     background:#57d9ff;
+  }
+
+  .tooltip-progress {
+    position: absolute;
+    margin-top: -26px;
+    right: 15px;
+    background-color: #ff9447;
+    padding: 1px 6px;
+    color: white;
+    border-radius: 5px;
+  }

@@ -71,13 +71,13 @@
 
       <div class="row" style="margin: 10px 0;">
           <div class="col-md-3">
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="tregSearch" placeholder="Treg">
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="tregSearch" placeholder="TREG">
           </div>
           <div class="col-md-3">
               <input type="text" class="form-control form-control-sm" [(ngModel)]="witelSearch" placeholder="Witel">
           </div>
           <div class="col-md-3">
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="nameSearch" placeholder="Am">
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="nameSearch" placeholder="AM">
           </div>
           <div class="col-md-3">
 
@@ -104,6 +104,8 @@
                 <th width="70">TREG</th>
                 <th>WITEL</th>
                 <th>AM</th>
+                <th>CUSTOMER</th>
+                <th>TARGET</th>
                 <th>REVENUE</th>
                 <th>KET</th>
             </tr>
@@ -114,13 +116,15 @@
                 <td>{{ item.TREG }}</td>
                 <td>{{ item.WITEL_NAME }}</td>
                 <td routerLink="/revenue/am/detail/{{ item.AM_ID }}">{{ item.NAME }}</td>
+                <td>{{ item.CUSTOMER_NAME }}</td>
+                <td align="right">{{ item.TARGET | numberId }}</td>
                 <td align="right">{{ item.REVENUE | numberId }}</td>
                 <td align="right">{{ item.KET }}%</td>
             </tr>
             </tbody>
             <tfoot>
 	            <tr>
-	                <td colspan="6">
+	                <td colspan="8">
 	                    <mfBootstrapPaginator [rowsOnPageSet]="[10,50,100]"></mfBootstrapPaginator>
 	                </td>
 	            </tr>

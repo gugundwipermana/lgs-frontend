@@ -167,7 +167,7 @@ export class HomeComponent implements OnInit {
                   for(let interim of dataInterim) {
 
                     if(interim['TREG'] == result['TREG']) {
-                      let target = Number(result['TARGET']) + Number(interim['TARGET']);
+                      let target = Number(result['TARGET']); // + Number(interim['TARGET']); // target tidak ditambah lagi dari interim...
                       let revenue = Number(result['REVENUE']) + Number(interim['TOTAL']);
     
                       data_item.push({
@@ -333,7 +333,7 @@ export class HomeComponent implements OnInit {
         var myPiechart = new Piechart(
             {
                 data: myVinyls,
-                colors: ["#fde23e","#f16e23", "#57d9ff","#937e88"],
+                colors: ["#3dd28d","#f16e23", "#57d9ff","#937e88"],
                 canvas: canvas,
                 legend: document.getElementById("myLegendAm")
             }
@@ -377,7 +377,7 @@ export class HomeComponent implements OnInit {
         var myPiechart = new Piechart(
             {
                 data: myVinyls,
-                colors: ["#fde23e","#f16e23", "#57d9ff","#937e88"],
+                colors: ["#3dd28d","#f16e23", "#57d9ff","#937e88"],
                 canvas: canvas,
                 legend: document.getElementById("myLegendCustomer")
             }
