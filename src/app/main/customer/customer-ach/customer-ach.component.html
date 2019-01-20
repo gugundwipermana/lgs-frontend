@@ -74,15 +74,15 @@
               <input type="text" class="form-control form-control-sm" [(ngModel)]="tregSearch" placeholder="TREG">
           </div>
           <div class="col-md-3">
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="witelSearch" placeholder="Witel">
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="witelSearch" placeholder="WITEL">
           </div>
           <div class="col-md-3">
               <input type="text" class="form-control form-control-sm" [(ngModel)]="nameSearch" placeholder="AM">
           </div>
           <div class="col-md-3">
 
-              <select class="form-control form-control-sm" [(ngModel)]="ketSearch" placeholder="Ket">
-                  <option value="">ALL</option>
+              <select class="form-control form-control-sm" [(ngModel)]="ketSearch" placeholder="KETERANGAN">
+                  <option value="">KETERANGAN</option>
                   <option value="> 150">> 150</option>
                   <option value="> 100">> 100</option>
                   <option value="> 50">> 50</option>
@@ -107,12 +107,12 @@
                 <th>CUSTOMER</th>
                 <th>TARGET</th>
                 <th>REVENUE</th>
-                <th>KET</th>
+                <th>KETERANGAN</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let item of mf.data; let i = index">
-                <td>{{ i+1 }}</td>
+                <td>{{ data.indexOf(item) + 1 }}</td>
                 <td>{{ item.TREG }}</td>
                 <td>{{ item.WITEL_NAME }}</td>
                 <td routerLink="/revenue/am/detail/{{ item.AM_ID }}">{{ item.NAME }}</td>

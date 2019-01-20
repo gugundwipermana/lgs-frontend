@@ -350,7 +350,7 @@ var Barchart = function(options){
   var ctx = options.canvas.getContext("2d");
   this.colors = options.colors;
   var width= 1000;
-  var height = 450;
+  var height = 200;
   var padding = 10;
   ctx.clearRect(0, 0, width, height);
   this.draw = function(){

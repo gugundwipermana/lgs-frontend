@@ -11,3 +11,21 @@
 .th-center {
     text-align: center;
 }
+
+
+
+
+
+
+
+/**
+ * Progress Bar
+ */
+
+ .progress {
+    height: 5px;
+ }
+
+  .progress-bar{
+     background:#3dd28d;
+  }

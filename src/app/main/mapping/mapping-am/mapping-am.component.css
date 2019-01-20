@@ -7,3 +7,7 @@
     background-color: #f5ecec;
     cursor: pointer;
 }
+
+.td-click td {
+    text-align: center;
+}

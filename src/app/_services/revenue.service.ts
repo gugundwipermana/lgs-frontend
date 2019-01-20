@@ -16,6 +16,7 @@ export class RevenueService {
   private url_getHomeInterim: string;
   private url_getHomeYtdCustomer: string;
   private url_getHomeYtdAm: string;
+  private url_getHomeCustomerAchieve: string;
 
   private url_getDetail: string;
 
@@ -32,6 +33,8 @@ export class RevenueService {
     this.url_getHomeInterim = this.url+"RevenueController/getHomeInterim";
     this.url_getHomeYtdCustomer = this.url+"RevenueController/getHomeYtdCustomer";
     this.url_getHomeYtdAm = this.url+"RevenueController/getHomeYtdAm";
+
+    this.url_getHomeCustomerAchieve = this.url+"RevenueController/getHomeCustomerAchieve";
 
     this.url_getDetail = this.url+"RevenueController/detail";
 
@@ -73,6 +76,17 @@ export class RevenueService {
       .map((response: Response) => response.json());
   }
 
+  getHomeCustomerAchieve(year, month): Observable<any[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_getHomeCustomerAchieve+'/'+year+'/'+month, options)
+      .map((response: Response) => response.json());
+  }
+
+
+
+  
 
 
 

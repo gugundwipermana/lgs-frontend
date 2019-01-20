@@ -73,7 +73,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-      <canvas #canvasBar width="1000" height="450" style="width: 1000px; height: 450px;"></canvas>
+      <canvas #canvasBar width="1000" height="200" style="width: 1000px; height: 200px;"></canvas>
       <legend for="myCanvas"></legend>
     </div>
 </div>
@@ -131,7 +131,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let item of mf.data; let i = index">
-                <td class="td-right">{{ i+1 }}</td>
+                <td class="td-right">{{ data.indexOf(item) + 1 }}</td>
                 <td class="td-left">{{ item.TREG }}</td>
                 <td class="td-left">{{ item.WITEL_NAME }}</td>
                 <td class="td-left">{{ item.CUSTOMER_NAME }}</td>

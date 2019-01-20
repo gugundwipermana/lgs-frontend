@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit {
     this.getHomeYtdCurrent(true);
     this.getHomeInterim();
     this.getHomeYtdCustomer();
-    this.getHomeYtdAm();
+    this.getHomeCustomerAchieve();
   }
 
   getCurrentMonth() {
@@ -303,10 +303,10 @@ export class HomeComponent implements OnInit {
   }
 
   
-  getHomeYtdAm() {
+  getHomeCustomerAchieve() {
     this.loading_ach = true;
 
-    this.revenueService.getHomeYtdAm(this.year, this.month)
+    this.revenueService.getHomeCustomerAchieve(this.year, this.month)
       .subscribe(data => {
         this.pmsCountAms = data;  
         this.jum_1_am = 0;

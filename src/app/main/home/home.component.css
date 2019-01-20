@@ -51,14 +51,14 @@ hr {
  }
 
   .progress-bar{
-     background:#57d9ff;
+     background:#3dd28d;
   }
 
   .tooltip-progress {
     position: absolute;
     margin-top: -26px;
     right: 15px;
-    background-color: #ff9447;
+    background-color: #dd4b39;
     padding: 1px 6px;
     color: white;
     border-radius: 5px;

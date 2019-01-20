@@ -19,6 +19,8 @@ export class CustomerAchComponent implements OnInit {
   public start_month: number = 1;
   public end_month: number;
 
+  public ketSearch = "";
+
   constructor(
     public revenueService: RevenueService,
     public activatedRoute: ActivatedRoute,

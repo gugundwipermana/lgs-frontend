@@ -2,3 +2,8 @@
     background-color: #ffbcb4;
     cursor: pointer;
 }
+
+
+.td-click td {
+    text-align: center;
+}
