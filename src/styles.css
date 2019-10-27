@@ -6,11 +6,69 @@ a.btn-tab.active {
 
 
 .login-page {
-    padding-top: 40px;
+    padding-top: 80px;
     padding-bottom: 40px;
     background-color: #eee;
-    background-image: url(assets/img/background-2.jpg) !important;
+    background-image: url(assets/img/background-black.jpg) !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+}
+
+
+
+
+.box.box-white {
+    border-top: 0px;
+}
+
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #d8d8d8;
+}
+
+
+
+.box-title small.mapping-head-treg {
+    padding: 3px; 
+    background-color: #999;
+    color: white;
+    border-radius: 3px;
+}
+
+
+
+thead th {
+    text-align: center;
+}
+
+
+
+
+
+
+
+/**
+ * GIR Page...
+ * --------------------------------
+ */
+section.content {
+    min-height: 100vh;
+}
+
+.gir-box-group {
+    font-size: 10px;
+}
+
+
+
+
+
+
+/**
+ * Mappning filter hover
+ */
+.td-click td:hover {
+    background-color: #9febfd;
+    cursor: pointer;
 }

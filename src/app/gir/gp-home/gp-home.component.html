@@ -1,0 +1,385 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+  
+    <!-- Main content -->
+    <section class="content">
+
+      
+
+
+
+
+
+
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+              <div class="box box-white" style="height: 345px;">
+                <div class="box-header">
+                  <h3 class="box-title">REVENUE YTD <small>{{ bulan }}</small></h3>
+        
+                  <div class="box-tools box-tools-mepet">
+                      <button routerLink="/main/revenue/ytd" type="button" class="btn btn-block btn-default btn-xs btn-view-detail"><i class="fa fa-eye"></i> View Detail</button>
+                  </div>
+        
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+        
+                  <img *ngIf="loading_ytd" style="position: absolute; top:10px; left:10px;" class="img-loading" src="assets/img/loading.gif" />
+        
+                  <div class="row">
+                    <div class="col-md-4 col-gauge-chart">
+                      <rg-gauge-chart
+                        [canvasWidth]="canvasWidth"
+                        [needleValue]="needleValue"
+                        [centralLabel]="centralLabel"
+                        [options]="options"
+                        [name]="name"
+                        [bottomLabel]="bottomLabel"></rg-gauge-chart>
+        
+                    </div>
+                    <div class="col-md-8 text-rekap">
+        
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8 box-revenue">
+                            <p>TARGET</p>
+                            <h3>{{ totalTarget | thousandSuff }}</h3>
+                            <p>REALISASI</p>
+                            <h3>{{ totalRevenue | thousandSuff }}</h3>
+                            
+                            <div class="box-triangle"></div>
+                        </div>
+                      </div>
+        
+                      
+                      <p class="box-achieve">ACHIEVEMENT</p>
+                      <div class="progress">
+                          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax ="150" 
+                          style="min-width: 2em;" [style.width]="(( ((totalRevenue/totalTarget)*100)/100)*100 /3)*2 + '%'">
+                          </div>
+                          <span class="tooltip-progress">{{ ((totalRevenue/totalTarget)*100) | number: '.2-2' }}%</span>
+                          
+                          <div class="dot-progress-bar" [style.left]="(( ((totalRevenue/totalTarget)*100)/100)*100 /3)*2 + '%'"></div>
+        
+                          <div class="marker-50-progress-bar" [style.left]=" (50/3)*2 +'%'"><p>50</p></div>
+                          <div class="marker-100-progress-bar" [style.left]=" (100/3)*2 +'%'"><p>100</p></div>
+        
+        <!--
+                          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax ="100" 
+                          style="min-width: 2em;" [style.width]="(((totalRevenue/totalTarget)*100)/100)*100 + '%'">
+                          </div>
+                          <span class="tooltip-progress">{{ ((totalRevenue/totalTarget)*100) | number: '.2-2' }}%</span>
+                          
+                          <div class="dot-progress-bar" [style.left]="(((totalRevenue/totalTarget)*100)/100)*100 + '%'"></div>
+        
+                          <div class="marker-100-progress-bar" [style.left]="'100%'"></div>
+        -->
+        
+                        </div>
+        
+                    </div>
+                  </div>
+        
+                  <!-- Bagian 2 Tabel dan Chart-->
+                  <div class="row">
+                    <div class="col-md-8">
+                      <table class="table table-striped table-color">
+                        <thead>
+                          <tr>
+                            <th>TREG</th>
+                            <th>TARGET</th>
+                            <th>REALISASI</th>
+                            <th>ACHIEVEMENT</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of revenueTregs" [routerLink]="['revenue', year, '1', month, item.TREG, 'ALL', 'ALL', 'ALL']" class="tr-click">
+                            <td>{{ item.TREG }}</td>
+                            <td class="field-right" align="right">{{ item.TARGET | thousandSuff }}</td>
+                            <td class="field-right" align="right">{{ item.REVENUE | thousandSuff }}</td>
+                            <td class="field-right">{{ item.ACHIEVE | number: '.2-2' }}%</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                              <th>TOTAL LGS</th>
+                              <th class="field-right">{{ totalTarget | thousandSuff }}</th>
+                              <th class="field-right">{{ totalRevenue | thousandSuff }}</th>
+                              <th class="field-right">{{ (totalRevenue/totalTarget)*100 | number: '.2-2' }}%</th>
+                            </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="diagram-bar-cuistom">
+                          <canvas class="diagram-rotate" #canvasBarYtd width="150" height="150" style="width: 150px; height: 150px;"></canvas>
+                        
+                          <br/><hr/>
+                          <input type="checkbox" style="margin-left:10px;" data-md-icheck (change)="refreshYtdCurrent($event)" /> <span class="chcek-with-interim">With Interim Current Month</span>
+                      </div>
+                    </div>
+                  </div>
+        
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+        
+        
+        
+        
+            <div class="col-md-6">
+                <div class="box box-white" style="height: 345px;">
+                  <div class="box-header">
+                    <h3 class="box-title" style="font-size: 16px;">REVENUE CURRENT MONTH <small>{{ bulan }}</small></h3>
+          
+                    <div class="box-tools box-tools-mepet">
+                      <button routerLink="/main/revenue/current" type="button" class="btn btn-block btn-default btn-xs btn-view-detail"><i class="fa fa-eye"></i> View Detail</button>
+                    </div>
+          
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+        
+                    <img *ngIf="loading_current" style="position: absolute; top:10px; left:10px;" class="img-loading" src="assets/img/loading.gif" />
+          
+                    <div class="row">
+                      <div class="col-md-4 col-gauge-chart">
+                        <rg-gauge-chart
+                          [canvasWidth]="canvasWidth2"
+                          [needleValue]="needleValue2"
+                          [centralLabel]="centralLabel2"
+                          [options]="options2"
+                          [name]="name"></rg-gauge-chart>
+          
+                      </div>
+                      <div class="col-md-8 text-rekap">
+        
+                        <div class="row">
+                          <div class="col-md-4"></div>
+                          <div class="col-md-8 box-revenue current">
+                              <p>TARGET</p>
+                              <h3>{{ totalTarget2 | thousandSuff }}</h3>
+                              <p>REALISASI</p>
+                              <h3>{{ totalRevenue2 | thousandSuff }}</h3>
+        
+                              <div class="box-triangle"></div>
+                          </div>
+                        </div>
+                       
+                        <p class="box-achieve">ACHIEVEMENT</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax ="100" 
+                            style="min-width: 2em;" [style.width]="((((totalRevenue2/totalTarget2)*100)/100)*100 /3)*2 + '%'">
+                            </div>
+                            <span class="tooltip-progress">{{ ((totalRevenue2/totalTarget2)*100) | number: '.2-2' }}%</span>
+        
+                            <div class="dot-progress-bar" [style.left]="(( ((totalRevenue2/totalTarget2)*100)/100)*100 /3)*2 + '%'"></div>
+        
+                            <div class="marker-50-progress-bar" [style.left]=" (50/3)*2 +'%'"><p>50</p></div>
+                            <div class="marker-100-progress-bar" [style.left]=" (100/3)*2 +'%'"><p>100</p></div>
+                        </div>
+                      </div>
+                    </div>
+          
+                    <!-- Bagian 2 Tabel dan Chart-->
+                    <div class="row">
+                      <div class="col-md-8">
+                        <table class="table table-striped table-color">
+                          <thead>
+                            <tr>
+                                <th>&nbsp;&nbsp;&nbsp;TREG&nbsp;&nbsp;&nbsp;</th>
+                                <th>TARGET</th>
+                                <th>REALISASI</th>
+                                <th>ACHIEVEMENT</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of interims">
+                              <td>{{ item.TREG }}</td>
+                              <td class="field-right" align="right">{{ item.TARGET | thousandSuff }}</td>
+                              <td class="field-right" align="right">{{ item.TOTAL | thousandSuff }}</td>
+                              <td class="field-right">{{ item.ACH }}%</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                                <th>TOTAL LGS</th>
+                                <th class="field-right">{{ totalTarget2 | thousandSuff }}</th>
+                                <th class="field-right">{{ totalRevenue2 | thousandSuff }}</th>
+                                <th class="field-right">{{ (totalRevenue2/totalTarget2)*100 | number: '.2-2' }}%</th>
+                              </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="diagram-bar-cuistom">
+                            <canvas class="diagram-rotate" #canvasBarCurrent width="150" height="150" style="width: 150px; height: 150px;"></canvas>
+                        </div>
+                      </div>
+                    </div>
+          
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+        
+        
+        
+        
+        
+        
+        
+        
+              <!-- Box Tingkatan 2 -->
+        
+              <div class="col-md-6">
+                <div class="box box-white">
+                  <div class="box-header">
+                    <h3 class="box-title">CUSTOMER ACHIEVEMENT <!--<small>{{ bulan }}</small>--></h3>
+                    <div class="box-tools box-tools-mepet">
+                      <button routerLink="/main/customer/ach" type="button" class="btn btn-block btn-default btn-xs btn-view-detail"><i class="fa fa-eye"></i> View Detail</button>
+                    </div>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                    
+                    <img *ngIf="loading_ach" style="position: absolute; top:10px; left:10px;" class="img-loading" src="assets/img/loading.gif" />
+        
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="diagram-cuistom">
+                          <canvas #canvasDonutAm width="130" height="130"></canvas>
+                          <div id="myLegendAm"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>TREG</th>
+                              <th>> 150%</th>
+                              <th>100% - 150%</th>
+                              <th>50% - 100%</th>
+                              <th>< 50%</th>
+                              <th>TOTAL</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of pmsCountAms" [routerLink]="['revenue', 'am']" class="tr-click">
+                              <td>{{ item.TREG }}</td>
+                              <td><i *ngIf="item.DIATAS_150 === null">-</i>{{ item.DIATAS_150 }}</td>
+                              <td><i *ngIf="item.DIATAS_100 === null">-</i>{{ item.DIATAS_100 }}</td>
+                              <td><i *ngIf="item.DIATAS_50 === null">-</i>{{ item.DIATAS_50 }}</td>
+                              <td><i *ngIf="item.DIBAWAH_50 === null">-</i>{{ item.DIBAWAH_50 }}</td>
+                              <th>{{ (item.DIATAS_150*1) + (item.DIATAS_100*1) + (item.DIATAS_50*1) + (item.DIBAWAH_50*1) }}</th>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>TOTAL LGS</th>
+                              <th>{{ jum_1_am }}</th>
+                              <th>{{ jum_2_am }}</th>
+                              <th>{{ jum_3_am }}</th>
+                              <th>{{ jum_4_am }}</th>
+                              <th>{{ jum_1_am + jum_2_am + jum_3_am + jum_4_am}}</th>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+        
+        
+              <div class="col-md-6">
+                <div class="box box-white">
+                  <div class="box-header">
+                    <h3 class="box-title">CUSTOMER TIER <!--<small>{{ bulan }}</small>--></h3>
+                    <div class="box-tools box-tools-mepet">
+                      <button routerLink="/main/customer/tier" type="button" class="btn btn-block btn-default btn-xs btn-view-detail"><i class="fa fa-eye"></i> View Detail</button>
+                    </div>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+        
+                    <img *ngIf="loading_tier" style="position: absolute; top:10px; left:10px;" class="img-loading" src="assets/img/loading.gif" />
+        
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="diagram-cuistom">
+                          <canvas #canvasDonutCustomer width="130" height="130"></canvas>
+                          <div id="myLegendCustomer" style="margin-left: 16px;"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>TREG</th>
+                              <th>> 10 M</th>
+                              <th>2.5 - 10 M</th>
+                              <th>< 2.5 M</th>
+                              <th>ZERO</th>
+                              <th>TOTAL</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of pmsCountCustomers" [routerLink]="['revenue', 'customer']" class="tr-click">
+                              <td>{{ item.TREG }}</td>
+                              <td><i *ngIf="item.DIATAS_10 === null">-</i>{{ item.DIATAS_10 }}</td>
+                              <td><i *ngIf="item.DUA_SAMPAI_10 === null">-</i>{{ item.DUA_SAMPAI_10 }}</td>
+                              <td><i *ngIf="item.DUA === null">-</i>{{ item.DUA }}</td>
+                              <td><i *ngIf="item.ZERO === null">-</i>{{ item.ZERO }}</td>
+                              <th>{{ (item.DIATAS_10*1) +  (item.DUA_SAMPAI_10*1) + (item.DUA*1) + (item.ZERO*1) }}</th>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>TOTAL LGS</th>
+                              <th>{{ jum_1_ca }}</th>
+                              <th>{{ jum_2_ca }}</th>
+                              <th>{{ jum_3_ca }}</th>
+                              <th>{{ jum_4_ca }}</th>
+                              <th>{{ jum_1_ca + jum_2_ca + jum_3_ca + jum_4_ca }}</th>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+        
+          </div>
+
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+  

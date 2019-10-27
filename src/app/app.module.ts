@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AdminModule } from './admin/admin.module';
-import { MainModule } from './main/main.module';
+import { GirModule } from './gir/gir.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http'; 
@@ -42,14 +42,8 @@ import { AdminGuard } from './_guards/admin.guard';
 
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
-import { MainComponent } from './main/main.component';
-import { MainHeaderComponent } from './main/main-header/main-header.component';
-import { MainLeftSideComponent } from './main/main-left-side/main-left-side.component';
-import { MainContentComponent } from './main/main-content/main-content.component';
-import { MainFooterComponent } from './main/main-footer/main-footer.component';
-import { MainControlSidebarComponent } from './main/main-control-sidebar/main-control-sidebar.component';
-import { HomeComponent } from './main/home/home.component';
-import { MappingComponent } from './main/mapping/mapping.component';
+import { NumberIdPipe } from './_pipe/numberId.pipe';
+import { SharedService } from './_services/shared.service';
 
 
 @NgModule({
@@ -62,16 +56,6 @@ import { MappingComponent } from './main/mapping/mapping.component';
     StarterFooterComponent,
     StarterControlSidebarComponent,
     AuthComponent,
-/*
-    MainComponent,
-    MainHeaderComponent,
-    MainLeftSideComponent,
-    MainContentComponent,
-    MainFooterComponent,
-    MainControlSidebarComponent,
-    HomeComponent,
-    MappingComponent,
-    */
 
 //    GaugeChartComponent,
 
@@ -82,6 +66,8 @@ import { MappingComponent } from './main/mapping/mapping.component';
 //    RevenuePerFilterPipe,
 //    NumberIdPipe,
 
+  // NumberIdPipe,
+
   ],
   imports: [
     HttpModule,
@@ -91,13 +77,14 @@ import { MappingComponent } from './main/mapping/mapping.component';
     BrowserModule,
     AppRoutingModule,
     AdminModule,
-    MainModule
+    GirModule,
   ],
   providers: [
     AuthGuard,
     AdminGuard,
     AuthService,
-    SettingService
+    SettingService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,110 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        SCN
+        <small>List</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> SCN</a></li>
+        <li class="active">List</li>
+      </ol>
+    </section>
+  
+    <!-- Main content -->
+    <section class="content">
+
+      
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Smart City Nusantara</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                     
+                      <img *ngIf="loading" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+                      
+        
+                      <div class="row">
+                        <div class="col-md-4" style="height: 300px;">
+        
+                            <canvas #canvasDonutAm width="300" height="320">
+                                Your browser does not support the HTML5 canvas tag.</canvas>
+        
+        
+                                    <a style="position:absolute; left:60px; top: 80px; font-size:20px;" [routerLink]="['1']">{{ count_category_1 }}</a> <br/>
+                                    <a style="position:absolute; left:210px; top: 80px; font-size:20px;" [routerLink]="['2']">{{ count_category_2 }}</a> <br/>
+                                    <a style="position:absolute; left:140px; top: 230px; font-size:20px;" [routerLink]="['3']">{{ count_category_3 }}</a> <br/>
+                                    <a style="position:absolute; left:140px; top: 80px; font-size:20px;" [routerLink]="['4']">{{ count_category_4 }}</a> <br/>
+                                    <a style="position:absolute; left:220px; top: 160px; font-size:20px;" [routerLink]="['5']">{{ count_category_5 }}</a> <br/>
+                                    <a style="position:absolute; left:90px; top: 160px; font-size:20px;" [routerLink]="['6']">{{ count_category_6 }}</a> <br/>
+                                    <a style="position:absolute; left:140px; top: 140px; font-size:20px;" [routerLink]="['7']">{{ count_category_7 }}</a> <br/>
+                                    <a style="position:absolute; left:20px; top: 250px; font-size:20px;" [routerLink]="['8']">{{ count_category_8 }}</a> <br/>
+                                 
+        
+                        </div>
+                        <div class="col-md-8">
+                          <table class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>TREG</th>
+                                <th>GC SCN</th>
+                                <th>GC NON SCN</th>
+                                <th>TOTAL</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of customer_scn" class="td-click">
+                                  <td>{{ item.TREG }}</td>
+                                  <td>{{ item.JUM_CUSTOMER_SCN }}</td>
+                                  <td>{{ item.JUM_CUSTOMER - item.JUM_CUSTOMER_SCN }}</td>
+                                  <td>{{ item.JUM_CUSTOMER }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+        
+                        </div>
+                      </div>
+        
+                      <br/><hr/>
+        
+        
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>TREG</th>
+                            <th>Connectivity (Mbps)</th>
+                            <th>Content</th>
+                            <th>Collaboration</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of data" class="td-click">
+                              <td>{{ item.TREG }}</td>
+                              <td>{{ item.CONN }}</td>
+                              <td>{{ item.CONT }}</td>
+                              <td>{{ item.COLL }}</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                              <th>TOTAL LGS</th>
+                              <th>{{ jum_conn }}</th>
+                              <th>{{ jum_cont }}</th>
+                              <th>{{ jum_coll }}</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                </div>
+            </div>
+          </div>
+          
+      
+
+    </section>
+    <!-- /.content -->
+</div>
+  

@@ -7,15 +7,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthComponent } from '../auth/auth.component';
 import { AuthGuard } from '../_guards/auth.guard';
-import { MainComponent } from '../main/main.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       { path: 'login',    component: AuthComponent },
-      { path: '', redirectTo: 'main/home', pathMatch: 'full', canActivate: [AuthGuard]},
-      { path: 'main', component: MainComponent, canActivate: [AuthGuard]},
-      
+      { path: '', redirectTo: 'gir/home', pathMatch: 'full', canActivate: [AuthGuard]},
     ])
   ],
   declarations: [],

@@ -1,0 +1,10 @@
+canvas {
+    border-bottom: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+    margin-bottom: 40px;
+}
+
+
+table td, table th {
+    text-align: center;
+}

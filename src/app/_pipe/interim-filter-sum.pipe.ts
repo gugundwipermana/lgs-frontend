@@ -20,10 +20,10 @@ export class InterimFilterSumPipe implements PipeTransform {
                 if (tregSearch && item.TREG.toLowerCase().indexOf(tregSearch.toLowerCase()) === -1){
                     hasil = false;
                 }
-                if (witelSearch && item.WITEL_NAME.toLowerCase().indexOf(witelSearch.toLowerCase()) === -1){
+                if (witelSearch && item.WITEL_ID.toLowerCase().indexOf(witelSearch.toLowerCase()) === -1){
                     hasil = false;
                 }
-                if (customerSearch && item.CUSTOMER_NAME.toLowerCase().indexOf(customerSearch.toLowerCase()) === -1){
+                if (customerSearch && item.CUSTOMER_ID.toLowerCase().indexOf(customerSearch.toLowerCase()) === -1){
                     hasil = false;
                 }
 

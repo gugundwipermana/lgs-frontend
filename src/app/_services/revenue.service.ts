@@ -23,6 +23,10 @@ export class RevenueService {
   private url_getPerCustomer: string;
   private url_getPerAm: string;
 
+  private url_interimSiska: string;
+  private url_uploadXlsSiska: string;
+
+
   constructor(
     private http: Http,
     private settingService: SettingService
@@ -40,6 +44,9 @@ export class RevenueService {
 
     this.url_getPerCustomer = this.url+"RevenueController/getDetailCustomor";
     this.url_getPerAm = this.url+"RevenueController/getDetailAm";
+
+    this.url_interimSiska = this.url+"RevenueController/getInterimSiska";
+    this.url_uploadXlsSiska = this.url+"RevenueController/store_siska_excel";
   }
 
   
@@ -116,6 +123,43 @@ export class RevenueService {
 
     return this.http.get(this.url_getPerAm+'/'+year+'/'+month_start+'/'+month_end, options)
       .map((response: Response) => response.json());
+  }
+
+
+  getInterimSiska(year, month): Observable<any[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_interimSiska+'/'+year+'/'+month, options)
+      .map((response: Response) => response.json());
+  }
+
+/*
+
+  uploadXlsSiska(formData, year, month) {
+    
+    let headers = new Headers();
+    // In Angular 5, including the header Content-Type can invalidate your request 
+    headers.append("Content-type","multipart/form-data; charset=utf-8; boundary=" + Math.random().toString().substr(2));
+    headers.append('Accept', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    
+    return this.http.post(this.url_uploadXlsSiska+'/'+year+'/'+month, formData, options)
+        .map(res => res);
+        
+        // .catch(error => Observable.throw(error))
+        // .subscribe(
+        //     data => console.log('success'),
+        //     error => console.log(error)
+        // ); 
+  }
+
+*/
+
+
+  uploadXlsSiska(formData, year, month) {
+    return this.http.post(this.url_uploadXlsSiska+'/'+year+'/'+month, formData)
+            .map((response: Response) => response.json());
   }
 
 

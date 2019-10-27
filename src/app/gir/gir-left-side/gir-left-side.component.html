@@ -1,0 +1,141 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      
+      <!-- PART I | MAIN DATA -->
+
+      <li [routerLinkActive]="['active']"><a routerLink="home"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+      
+      <li class="treeview">
+        <a href="#"><i class="fa fa-sitemap"></i> <span>MAPPING</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="mapping/customer">CUSTOMER</a></li>
+          <li><a routerLink="mapping/am">AM</a></li>
+          <li><a routerLink="mapping/account">ACCOUNT</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#"><i class="fa fa-dollar"></i> <span>REVENUE</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="revenue/ytd">REVENUE YTD</a></li>
+          <li><a routerLink="revenue/current">REVENUE CURRENT MONTH</a></li>
+        </ul>
+      </li>
+
+      <li [routerLinkActive]="['active']"><a routerLink="lop"><i class="fa fa-reorder"></i> <span>LOP</span></a></li>
+
+
+      <!-- PART II | NCX DATA -->
+
+      <li [routerLinkActive]="['active']"><a routerLink="ogp"><i class="fa fa-chrome"></i> <span>NCX OGP</span></a></li>
+
+
+      <li class="treeview">
+        <a routerLink="complete"><i class="fa fa-chrome"></i> <span>NCX COMPLETE</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="complete/AO">AO</a></li>
+          <li><a routerLink="complete/MO">MO</a></li>
+          <li><a routerLink="complete/RO">RO</a></li>
+          <li><a routerLink="complete/SO">SO</a></li>
+          <li><a routerLink="complete/DO">DO</a></li>
+        </ul>
+      </li>
+  
+  
+      <li class="treeview">
+        <a routerLink="expired"><i class="fa fa-chrome"></i> <span>REVENUE EXPIRED</span> <!--  END DATE CONTRACT -->
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="expired/AO">AO</a></li>
+          <li><a routerLink="expired/MO">MO</a></li>
+          <li><a routerLink="expired/RO">RO</a></li>
+          <li><a routerLink="expired/SO">SO</a></li>
+          <li><a routerLink="expired/DO">DO</a></li>
+        </ul>
+      </li>
+  
+      <li class="treeview">
+        <a href="#"><i class="fa fa-chrome"></i> <span>SALES BANDWITH LINK</span> <!-- routerLink="sales-bw" -->
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="sales-bw/link-ogp">LINK OGP</a></li>
+          <li><a routerLink="sales-bw/link-complete">LINK COMPLETE</a></li>
+        </ul>
+      </li>
+  
+      <li class="treeview">
+        <a href="#"><i class="fa fa-chrome"></i> <span>SALES BANDWITH WIFI</span> <!-- routerLink="sales-bw" -->
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="sales-bw/wifi-ogp">WIFI OGP</a></li>
+          <li><a routerLink="sales-bw/wifi-complete">WIFI COMPLETE</a></li>
+        </ul>
+      </li>
+
+
+      <!-- PART III | UPLOAD DATA -->
+  
+      <li class="treeview">
+        <a routerLink="piutang"><i class="fa fa-chrome"></i> <span>PIUTANG</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="piutang/detail">PIUTANG DETAIL</a></li>
+          <li><a routerLink="piutang/koreksi">KOREKSI</a></li>
+        </ul>
+      </li>
+  
+      <li><a routerLink="scn"><i class="fa fa-gears"></i> <span>SMART CITY NUSANTARA</span></a></li>
+      <li class="treeview">
+        <a routerLink="project-channel"><i class="fa fa-suitcase"></i> <span>PROJECT CHANNEL</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="project-channel/katalog">E-KATALOG</a></li>
+          <li><a routerLink="project-channel/tso">SHOPPING ONLINE</a></li>
+          <li><a routerLink="project-channel/pl">PENUNJUKAN LANGSUNG</a></li>
+          <li><a routerLink="project-channel/tender">TENDER</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fa fa-check"></i> <span>COMPLIANCE</span></a></li>
+
+<!--
+      <li class="header">LABELS</li>
+      <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+      <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+      <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+
+      -->
+      
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,32 @@
+<div clas="row">
+
+  <div class="col-md-3">
+    <select placeholder="Treg" [(ngModel)]="param_treg" class="form-control filter-select" (change)="changeTreg()">
+      <option value="ALL">ALL TREG</option>
+      <option *ngFor="let treg of tregs" [value]="treg.ID">{{ treg.ID }}</option>      
+    </select>
+  </div>
+  
+  <div class="col-md-3">
+    <select placeholder="Witel" [(ngModel)]="param_witel" class="form-control filter-select" (change)="changeWitel()">
+      <option value="ALL">ALL WITEL</option>
+      <option *ngFor="let witel of witels" [value]="witel.ID">{{ witel.NAME }}</option>      
+    </select>
+  </div>
+  
+  <div class="col-md-3">
+    <select placeholder="AM" [(ngModel)]="param_am" class="form-control filter-select" (change)="changeAm()">
+      <option value="ALL">ALL AM</option>
+      <option *ngFor="let am of ams" [value]="am.ID">{{ am.NAME }}</option>
+    </select>
+  </div>
+  
+  <div class="col-md-3">
+    <select placeholder="Customer" [(ngModel)]="param_customer" class="form-control filter-select" (change)="changeCustomer()">
+      <option value="ALL">ALL CUSTOMER</option>
+      <option *ngFor="let customer of customers" [value]="customer.ID">{{ customer.NAME }}</option>
+    </select>
+  </div>
+  
+
+</div>

@@ -14,6 +14,8 @@ export class CustomerService {
   private url_getByTregType: string;
   private url_getByWitel: string;
 
+  private url_searchByName: string;
+
   constructor(
     private http: Http,
     private authService: AuthService,
@@ -24,6 +26,8 @@ export class CustomerService {
     this.url_countByTregType = this.url+"CustomerController/countByTregType";
     this.url_getByTregType = this.url+"CustomerController/getByTregType";
     this.url_getByWitel = this.url+"CustomerController/getByWitel";
+
+    this.url_searchByName = this.url+"CustomerController/searchByName";
    }
 
 
@@ -49,6 +53,14 @@ export class CustomerService {
     let options = new RequestOptions({ headers: headers});
 
     return this.http.get(this.url_getByWitel+"/"+witel, options)
+      .map((response: Response) => response.json());
+  }
+
+  searchByName(val): Observable<Customer[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.get(this.url_searchByName+'/'+val, options)
       .map((response: Response) => response.json());
   }
 }

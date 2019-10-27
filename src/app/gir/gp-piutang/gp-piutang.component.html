@@ -1,0 +1,179 @@
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Piutang
+      <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Piutang</a></li>
+      <li class="active">List</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    
+
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Piutang</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+           
+            <img *ngIf="loading" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+
+
+
+            <div class="row">
+              <div class="col-md-4">
+  
+                    <table class="table">
+                      <tr>
+                        <td>PU</td>
+                        <td>{{ pu | numberId }}</td>
+                      </tr>
+                      <tr>
+                        <td>Target</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Pencapaian</td>
+                        <td>{{ pencapaian | numberId }}</td>
+                      </tr>
+                      <tr>
+                        <td>CR</td>
+                        <td>{{ cr }} %</td>
+                      </tr>
+                    </table>
+                  
+              </div>
+              <div class="col-md-4">
+  
+                  <canvas #canvasDonutBesar width="200" height="200"></canvas>
+                  <div id="myLegendBesar" style="margin-left: 16px;"></div>
+              </div>
+              <div class="col-md-4">
+  
+                  <canvas #canvasDonutUmur width="200" height="200"></canvas>
+                  <div id="myLegendUmur" style="margin-left: 16px;"></div>
+              </div>
+            </div>
+
+            <hr/>
+
+            <div class="row">
+              <div class="col-md-4">
+
+                  <canvas #canvasBarPiutang width="300" height="300" style="width: 300px; height: 300px;"></canvas>
+                
+              </div>
+              <div class="col-md-8">
+
+                  <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>ACCOUNT</th>
+                          <th>NAME</th>
+                          <th>CUSTOMER</th>
+                          <th style="width:60px;">TREG</th>
+                          <th>PU</th>
+                          <th>PEMBAYARAN</th>
+                          <th>SALDO</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of piutangs; let i = index" class="td-click">
+                            <td>{{ piutangs.indexOf(item) + 1 }}</td>
+                            <td>{{ item.ACCOUNT_ID }}</td>
+                            <td>{{ item.NAME }}</td>
+                            <td>{{ item.CUSTOMER_NAME }}</td>
+                            <td>{{ item.TREG }}</td>
+                            <td>{{ item.NILAI_CEK_BAYAR | numberId }}</td>
+                            <td>{{ item.NILAI_TOTAL | numberId }}</td>
+                            <td>{{ item.NULAI_SALDO | numberId }}</td>
+                            
+                        </tr>
+                      </tbody>
+                    </table>
+
+              </div>
+            </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Koreksi</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+           
+            <img *ngIf="loading_koreksi" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+            
+
+              <div class="row">
+                <div class="col-md-4">
+  
+                    <canvas #canvasBarKoreksi width="300" height="300" style="width: 300px; height: 300px;"></canvas>
+                  
+                </div>
+                <div class="col-md-8">
+  
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>ACCOUNT</th>
+                            <th>CUSTOMER</th>
+                            <th>NAME</th>
+                            <th>NILAI KOREKSI</th>
+                            <th style="width:60px;">TREG</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of koreksis; let i = index" class="td-click">
+                              <td>{{ koreksis.indexOf(item) + 1 }}</td>
+                              <td>{{ item.ACCOUNT_ID }}</td>
+                              <td>{{ item.CUSTOMER_NAME }}</td>
+                              <td>{{ item.NAME }}</td>
+                              <td>{{ item.NILAI_KOREKSI | numberId }}</td>
+                              <td>{{ item.TREG }}</td>
+                              
+                          </tr>
+                        </tbody>
+                      </table>
+  
+                </div>
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+</section>
+<!-- /.content -->
+</div>

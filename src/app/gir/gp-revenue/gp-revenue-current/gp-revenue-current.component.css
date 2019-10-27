@@ -1,0 +1,49 @@
+/* .row-total div {
+    border-right: .5px solid #ccc;
+    padding: 5px;
+    text-align: right;
+
+    margin-right: -13px;
+    margin-left: -10px;
+}
+*/
+
+.row-rekap h3 {
+    margin: 2px;
+}
+
+.th-center {
+    text-align: center;
+}
+
+.row-rekap div.col-rekap {
+    border-right: .5px solid #ccc;
+    text-align: right;
+    padding: 0 10px;
+    height: 60px;
+}
+
+
+
+
+
+/**
+ * Progress Bar
+ */
+
+ .progress {
+    height: 5px;
+ }
+
+  .progress-bar{
+     background:#3dd28d;
+  }
+
+
+
+
+
+
+.td-align-right {
+    text-align: right;
+}

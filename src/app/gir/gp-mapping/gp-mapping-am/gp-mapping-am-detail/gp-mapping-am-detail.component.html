@@ -1,0 +1,126 @@
+<div class="row" *ngIf="am_id" class="box-detail-am">
+    <!--
+    <img *ngIf="loading" style="position: absolute; top:10px; left:10px; z-index:99;" src="assets/img/loading.gif" />
+  -->
+  
+    <button (click)="closeComponent()" type="submit" class="btn btn-danger pull-right btn-sm btn-close">Close</button>
+    
+  
+      <div class="col-md-3">
+          <div class="box box-primary">
+              <div class="box-body box-profile">
+
+                <img class="profile-user-img img-responsive img-circle" src="{{ am.AVATAR }}" alt="User profile picture" style="height:100px;">
+
+                <h3 class="profile-username text-center">{{ am.NAME }}</h3>
+
+                <p class="text-muted text-center">{{ am.ID }}</p>
+
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <b>Jabatan</b> <a class="pull-right">{{ am.JABATAN }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Phone</b> <a class="pull-right">{{ am.PHONE }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Email</b> <a class="pull-right">{{ am.EMAIL }}</a>
+                    </li>
+                </ul>
+
+              </div>
+              <!-- /.box-body -->
+          </div>
+      </div>
+      <div class="col-md-9">
+          <div class="nav-tabs-custom">
+              <ul class="nav nav-tabs">
+                  <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true">Customer</a></li>
+                  <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">Edit Profile</a></li>
+                  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+              </ul>
+  
+              <div class="tab-content">
+                  <div class="tab-pane active" id="activity">
+                      
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                         <th>NO</th>
+                        <th>NIPNAS</th>
+                        <th>CUSTOMER</th>
+                        <th>TARGET</th>
+                        <th>REALISASI</th>
+                        <th>ACHIEVEMENT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of amCustomerDetail; let i = index">
+                            <td class="td-align-right">{{ i+1 }}</td>
+                            <td class="td-left">{{ item.ID }}</td>
+                            <td class="td-left">{{ item.NAME }}</td>
+                            <td class="td-align-right">{{ item.TARGET | numberId }}</td>
+                            <td class="td-align-right">{{ item.REVENUE | numberId }}</td>
+                            <td class="td-align-right">
+                                {{ item.ACHIEVE }}%
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax ="100" 
+                                    style="min-width: 2em;" [style.width]="item.ACHIEVE + '%'">
+                                </div>
+                            </div>    
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  
+                  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="timeline">
+
+                    <div class="form form-edit">
+                        <div class="form-group">
+                          <label>NIK</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="Enter NIK" [(ngModel)]="am.ID">
+                          <small class="form-text text-muted">Masukan NIK, Jika AMEX patikan NIK Uniq.</small>
+                        </div>
+                        <div class="form-group">
+                          <label>Name</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="Enter Name" [(ngModel)]="am.NAME">
+                        </div>
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="email" class="form-control form-control-sm" placeholder="Enter Email" [(ngModel)]="am.EMAIL">
+                          <small class="form-text text-muted">Jika Organik gunkana email Telkom</small>
+                        </div>
+                        <div class="form-group">
+                          <label>Phone</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="Enter Phone" [(ngModel)]="am.PHONE">
+                        </div>
+                        <div class="form-group">
+                          <label>Jabatan</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="Enter Jabatan" [(ngModel)]="am.JABATAN">
+                        </div>
+                        
+                        <image-crop (imageName)="setImageName($event)" [image_url]="image_url"></image-crop>
+
+                        <div class="form-group">
+                          <label>Avatar</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="Avatar ..." [(ngModel)]="am.AVATAR" disabled>
+                        </div>
+                        
+                        <!-- <button class="btn btn-primary btn-sm" (click)="saveAm()">Save</button> &nbsp; --> 
+                        <button class="btn btn-primary btn-sm" (click)="updateAm()">Update</button>
+                      </div>
+
+                  </div>
+                  <!-- /.tab-pane -->
+  
+                  <div class="tab-pane" id="settings">
+                      
+                  </div>
+                  <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+          </div>
+      </div>
+    </div>

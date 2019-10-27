@@ -27,13 +27,13 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     
     // add the the body classes
-    this.body.classList.add('hold-transition');
+    // this.body.classList.add('hold-transition');
     this.body.classList.add('login-page');
 
     // jika sudah login, alihkan ke '/'
     if(this.authGuard.canActivate(null) == true) {
       console.log('Sudah login');
-      this.router.navigate(['/main/home']);
+      this.router.navigate(['/gir/home']);
     }
   }
 
@@ -42,13 +42,19 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.model.EMAIL, this.model.PASSWORD)
       .subscribe(result => {
         if(result === true) {
-          this.router.navigate(['/main/home']);
+
+          this.body.classList.remove('login-page');
+
+          this.router.navigate(['/gir/home']);
 
           this.model.EMAIL = '';
           this.model.PASSWORD = '';
 
           // get user in parent component
           // this.app.getUser();
+
+          // location.reload();
+
         } else {
           this.error = "Username or Password is incorrect!";
         }

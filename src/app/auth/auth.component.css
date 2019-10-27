@@ -1,9 +1,32 @@
+.login-page, .register-page {
+    background: #ffffff !important;
+}
+
+
+.login-box {
+    margin: 50px auto !important;
+}
+
+
 .login-box-body {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.80);
+    border-radius: 5px;
     color: white;
+    /*
     border-bottom: 5px solid #00c0ef;
     border-top: 5px solid #875f5d;
+    
+
+    border: 1px solid #fdfdfd;
+    */
+
+    -webkit-box-shadow: -1px 7px 12px -4px rgba(0,0,0,0.62);
+    -moz-box-shadow: -1px 7px 12px -4px rgba(0,0,0,0.62);
+    box-shadow: -1px 7px 12px -4px rgba(0,0,0,0.62);
+}
+
+.login-box-msg {
+    color: #666;
 }
 
 .login-title {
@@ -16,9 +39,13 @@
 
 
 img.logo-lgs {
+    /*
     position: fixed;
     top: 20px;
     right: 20px;
+    */
+
+    margin-bottom: 15px;
   }
 
 .btn-login {
@@ -26,3 +53,19 @@ img.logo-lgs {
     border-color: #00c0ef !important;
 }
   
+
+
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.has-feedback .form-control {
+    border-radius: 5px;
+}

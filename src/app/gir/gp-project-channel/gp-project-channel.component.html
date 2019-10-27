@@ -1,0 +1,231 @@
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Project Channel
+      <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Project Channel</a></li>
+      <li class="active">List</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Project Bidding</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">YEAR</label>
+                        <select class="form-control" [(ngModel)]="year" (change)="getData()">
+                           <option value="2019">2019</option>
+                           <option value="2018">2018</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">MONTH</label>
+                        <select class="form-control" [(ngModel)]="month" (change)="getData()">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                </div>
+            </div>
+
+            <hr/>
+
+
+
+           
+            <img *ngIf="loading" style="position: absolute; top:10px; left:10px;" src="assets/img/loading.gif" />
+            
+
+
+
+
+            <div class="row">
+              <div class="col-md-6">
+
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th rowspan="2">TREG</th>
+                          <th colspan="8">WIN</th>
+                          <th rowspan="2" colspan="2">TOTAL</th>
+                        </tr>
+                        <tr>
+                          <th colspan="2">E-Katalog</th>
+                          <th colspan="2">TSO</th>
+                          <th colspan="2">PL</th>
+                          <th colspan="2">Tender</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of wins" class="td-click">
+                            <td>{{ item.TREG }}</td>
+                            <td>{{ item.CUR_A_JML }}</td>
+                            <td>{{ item.CUR_A_NIL | thousandSuff }}</td>
+                            <td>{{ item.CUR_B_JML }}</td>
+                            <td>{{ item.CUR_B_NIL | thousandSuff }}</td>
+                            <td>{{ item.CUR_C_JML }}</td>
+                            <td>{{ item.CUR_C_NIL | thousandSuff }}</td>
+                            <td>{{ item.CUR_D_JML }}</td>
+                            <td>{{ item.CUR_D_NIL | thousandSuff }}</td>
+                            <td>{{ (item.CUR_A_JML * 1) + (item.CUR_B_JML * 1) + (item.CUR_C_JML * 1) + (item.CUR_D_JML * 1) }}</td>
+                            <td>{{ (item.CUR_A_NIL * 1) + (item.CUR_B_NIL * 1) + (item.CUR_C_NIL * 1) + (item.CUR_D_NIL * 1) | thousandSuff }}</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th>{{ jum_win_A }}</th>
+                            <th>{{ nil_win_A | thousandSuff }}</th>
+                            <th>{{ jum_win_B }}</th>
+                            <th>{{ nil_win_B | thousandSuff }}</th>
+                            <th>{{ jum_win_C }}</th>
+                            <th>{{ nil_win_C | thousandSuff }}</th>
+                            <th>{{ jum_win_D }}</th>
+                            <th>{{ nil_win_D | thousandSuff }}</th>
+                            <th>{{ jum_win_total }}</th>
+                            <th>{{ nil_win_total | thousandSuff }}</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+
+              </div>
+              <div class="col-md-6">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                      <canvas #canvasBarWinA width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                      <canvas #canvasBarWinB width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                      <canvas #canvasBarWinC width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                      <canvas #canvasBarWinD width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                    </div>
+                </div>
+                
+              </div>
+            </div>
+
+
+            <hr/>
+
+            
+
+            <div class="row">
+              <div class="col-md-6">
+
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th rowspan="2">TREG</th>
+                          <th colspan="8">OGP</th>
+                          <th rowspan="2" colspan="2">TOTAL</th>
+                        </tr>
+                        <tr>
+                          <th colspan="2">E-Katalog</th>
+                          <th colspan="2">TSO</th>
+                          <th colspan="2">PL</th>
+                          <th colspan="2">Tender</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of ogps" class="td-click">
+                            <td>{{ item.TREG }}</td>
+                            <td>{{ item.CUR_A_JML }}</td>
+                            <td>{{ item.CUR_A_NIL | thousandSuff }}</td>
+                            <td>{{ item.CUR_B_JML }}</td>
+                            <td>{{ item.CUR_B_NIL | thousandSuff }}</td>
+                            <td>{{ item.CUR_C_JML }}</td>
+                            <td>{{ item.CUR_C_NIL | thousandSuff }}</td>
+                            <td>{{ item.CUR_D_JML }}</td>
+                            <td>{{ item.CUR_D_NIL | thousandSuff }}</td>
+                            <td>{{ (item.CUR_A_JML * 1) + (item.CUR_B_JML * 1) + (item.CUR_C_JML * 1) + (item.CUR_D_JML * 1) }}</td>
+                            <td>{{ (item.CUR_A_NIL * 1) + (item.CUR_B_NIL * 1) + (item.CUR_C_NIL * 1) + (item.CUR_D_NIL * 1) | thousandSuff }}</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th>{{ jum_ogp_A }}</th>
+                            <th>{{ nil_ogp_A | thousandSuff }}</th>
+                            <th>{{ jum_ogp_B }}</th>
+                            <th>{{ nil_ogp_B | thousandSuff }}</th>
+                            <th>{{ jum_ogp_C }}</th>
+                            <th>{{ nil_ogp_C | thousandSuff }}</th>
+                            <th>{{ jum_ogp_D }}</th>
+                            <th>{{ nil_ogp_D | thousandSuff }}</th>
+                            <th>{{ jum_ogp_total }}</th>
+                            <th>{{ nil_ogp_total | thousandSuff }}</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+
+              </div>
+              <div class="col-md-6">
+                
+                  <div class="row">
+                      <div class="col-md-6">
+                        <canvas #canvasBarOgpA width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                      </div>
+                      <div class="col-md-6">
+                        <canvas #canvasBarOgpB width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                      </div>
+                      <div class="col-md-6">
+                        <canvas #canvasBarOgpC width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                      </div>
+                      <div class="col-md-6">
+                        <canvas #canvasBarOgpD width="200" height="150" style="width: 200px; height: 150px;"></canvas>
+                      </div>
+                  </div>
+                
+                  
+              </div>
+            </div>
+
+
+
+            
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+</section>
+<!-- /.content -->
+</div>

@@ -1,0 +1,224 @@
+table {
+    font-size: 10px;
+}
+
+table td, table th {
+    text-align: center;
+    padding: 2px;
+    color: #666;
+
+    padding-right: 5px;
+}
+
+.field-right {
+    text-align: right !important;
+}
+
+.table-color tr:nth-child(1) td:nth-child(4) { border-right: 3px solid #fce240; }
+.table-color tr:nth-child(2) td:nth-child(4) { border-right: 3px solid #f16e23; }
+.table-color tr:nth-child(3) td:nth-child(4) { border-right: 3px solid #57d9ff; }
+.table-color tr:nth-child(4) td:nth-child(4) { border-right: 3px solid #937e88; }
+.table-color tr:nth-child(5) td:nth-child(4) { border-right: 3px solid #67b6c7; }
+.table-color tr:nth-child(6) td:nth-child(4) { border-right: 3px solid #bccd7a; }
+.table-color tr:nth-child(7) td:nth-child(4) { border-right: 3px solid #dd4b39; }
+
+
+
+
+.text-rekap {
+    padding: 0;
+    margin-left: -15px;
+}
+
+.text-rekap p {
+    margin-bottom: 0px;
+    color: #00000066;
+}
+
+.text-rekap h3 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.chcek-with-interim {
+    font-size: 10px;
+    margin-left:5px;
+    color: #999;
+    position: absolute;
+    margin-top: 3px;
+}
+
+
+
+
+.diagram-cuistom {
+    margin-left:20px;
+}
+
+.diagram-bar-cuistom {
+    margin-left: -25px;
+}
+
+
+/**
+ * Progress Bar
+ */
+
+ .progress {
+    height: 3px;
+    margin-bottom: 5px; 
+ }
+
+  .progress-bar{
+     background:#57d9ff;
+  }
+
+  .tooltip-progress {
+    position: absolute;
+    margin-top: -44px;
+    right: 19px;
+    padding: 1px 6px;
+    color: #bdbdbd;
+    border-radius: 5px;
+    font-size: 30px;
+  }
+
+
+    .dot-progress-bar {
+        width: 15px;
+        height: 15px;
+        background-color: #57d9ff;
+        position: absolute;
+        margin-top: -6px;
+        margin-left: -7px;
+        border-radius: 50%;
+        border: 3px solid #a1eaff;
+
+        left: 0px;
+
+        -webkit-transition: left .5s; /* Safari */
+        transition: left .5s;
+    }
+
+    .marker-100-progress-bar, .marker-50-progress-bar {
+        width: 2px;
+        height: 7px;
+        background-color: #49d594;
+        position: absolute;
+        margin-top: -2px;
+        margin-left: -1px;
+
+        left: 0px;
+    }
+    .marker-50-progress-bar {
+        background-color: #fce240;
+    }
+
+    .marker-100-progress-bar p, .marker-50-progress-bar p {
+        position: absolute;
+        top: -15px;
+        left: -5px;
+        font-size: 10px;
+    }
+
+
+
+
+
+.box-revenue {
+    position: absolute;
+    width: 150px;
+    top: -45px;
+    left: 98px;
+    padding: 10px 20px 0;
+    border-radius: 5px 5px 0 0;
+    background-color: #49d594;
+    color: #ffffff;
+    /* border-left: 3px solid #1eb670; */
+
+    /*
+    -webkit-box-shadow: -1px 0px 12px 0px rgba(163,163,163,1);
+    -moz-box-shadow: -1px 0px 12px 0px rgba(163,163,163,1);
+    box-shadow: -1px 0px 12px 0px rgba(163,163,163,1);
+    */
+    
+}
+    .box-revenue h3 {
+        text-shadow: 2px 2px #1eb670;
+        line-height: .8;
+    }
+
+    .box-revenue.current {
+        background-color: #fd98b5;
+        /* border-left: 3px solid #f87b9f; */
+    }
+        .box-revenue.current h3 {
+            text-shadow: 2px 2px #f87b9f;
+        }
+
+
+
+    .box-triangle {
+        width: 0;
+        height: 0;
+        border-left: 75px solid transparent;
+        border-right: 75px solid transparent;
+        border-top: 20px solid #49d594;
+        position: absolute;
+        left: 0;
+    }
+
+    .current .box-triangle {
+        border-top: 20px solid #fd98b5;
+    }
+
+.box-achieve {
+    margin-top: 89px;
+    color: #999 !important;
+}
+
+
+
+.btn-view-detail {
+    background-color: #e2e6eb;
+    color: #868686;
+    border: 0;
+    border-radius: 0 3px 0;
+    box-shadow: inset 1px -1px 1px rgba(109, 109, 109, 0.1);
+    font-size: 10px;
+}
+
+h3.box-title {
+    color: #999;
+    font-weight: 300;
+}
+
+.col-gauge-chart {
+    margin-top: -20px;
+}
+
+
+.box-tools-mepet {
+    top: 0;
+    right: 0;
+}
+
+
+.img-loading {
+    z-index:999;
+}
+
+
+.diagram-rotate {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(90deg);
+    
+    margin-toP: 7px;
+}
