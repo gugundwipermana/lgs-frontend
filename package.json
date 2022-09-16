@@ -32,7 +32,7 @@
     "admin-lte": "2.3.11",
     "angular-gauge-chart": "^0.5.0",
     "angular2-datatable": "^0.6.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "bootstrap-datepicker": "^1.7.1",
     "bootstrap3-wysihtml5-bower": "^0.3.3",
     "core-js": "^2.4.1",
